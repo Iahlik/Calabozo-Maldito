@@ -1,0 +1,294 @@
+/* Definición de variables de colores */
+:root {
+    --background-color: #2c3e50;
+    --border-color: #603d1d;
+    --font-color: #e0e0e0;
+    --yellow: #ffcc00;
+    --orange: #ff9900;
+    --blue: #3498db;
+    --green: #2ecc71;
+    --red: #e74c3c;
+}
+
+/* Estilos generales para el cuerpo del documento */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--background-color);
+    background-image: url('https://img.itch.zone/aW1hZ2UvMTg2NDQyOC8xMDk1NDUwNC5wbmc=/original/DROtZe.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: var(--font-color);
+    transition: background-image 1s ease-in-out;
+}
+
+/* Media Queries para dispositivos con ancho mínimo de 768px */
+@media (min-width: 768px) {
+    
+    /* Estilos específicos para el tablero de juego en pantallas grandes */
+    #game-board {
+        grid-template-columns: repeat(10, calc(50px * 0.9));
+        gap: 2px;
+        margin: 0 auto;
+    }
+    
+    /* Ajustes para la clase .cell en pantallas grandes */
+    .cell {
+        width: calc(50px * 0.9);
+        height: calc(50px * 0.9);
+        font-size: 24px;
+    }
+
+    #direction-pad {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(70%);
+    }
+
+    
+    /* Ajustes para el direction pad en pantallas grandes */
+    #direction-pad button {
+        font-size: 20px;
+        padding: 8px 16px;
+        margin: 4px;
+    }
+    
+}
+
+/* Media Queries para dispositivos con ancho máximo de 768px */
+@media (max-width: 768px) {
+
+    /* Estilos específicos para el tablero de juego en pantallas pequeñas */
+    #game-board {
+        grid-template-columns: repeat(10, calc(50px * 0.9));
+        gap: 1px;
+        margin: 0 auto;
+    }
+    
+    /* Ajustes para la clase .cell en pantallas pequeñas */
+    .cell {
+        width: calc(40px * 0.9);
+        height: calc(40px * 0.9);
+        font-size: 20px;
+    }
+    
+    /* Ajustes para el direction pad en pantallas pequeñas */
+    #direction-pad {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(50%);
+    }
+
+    #direction-pad button {
+        font-size: 16px;
+        padding: 6px 12px;
+        margin: 3px;
+    }
+    
+    /* Ajustes para las cards en pantallas pequeñas */
+    .card {
+        font-size: 14px;
+    }
+    
+}
+
+/* Estilos del tablero de juego */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(10, calc(50px * 0.8));
+    gap: 2px;
+    margin-top: 20px;
+}
+
+/* Estilos de las celdas */
+.cell {
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: var(--blue);
+    color: var(--font-color);
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+/* Estilos del estado del juego y el direction pad */
+#game-status {
+    margin-top: 30px;
+}
+
+/* Estilos del direction pad */
+#direction-pad button {
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 4px;
+    background-color: var(--yellow);
+    color: var(--font-color);
+    border: 2px solid var(--orange);
+    cursor: pointer;
+}
+
+#direction-pad button:hover {
+    background-color: var(--blue);
+}
+
+/* Estilos de las celdas visitadas */
+.cell.visited {
+    opacity: 1;
+}
+
+.visited-monster {
+    background-color: var(--red);
+}
+
+.visited-fairy {
+    background-color: var(--blue);
+}
+
+.visited-treasure {
+    background-color: var(--yellow);
+}
+
+.visited-water {
+    background-color: var(--green);
+}
+
+/* Resto de estilos... */
+
+/* Estilos de los emojis */
+.emoji {
+    margin-left: 5px;
+    font-size: 13px;
+}
+
+/* Estilos del overlay de fondo */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Estilos personalizados para las cards */
+.card {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: var(--font-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 1px;
+}
+
+.card-title {
+    font-size: 1rem;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.player {
+    transition: transform 0.2s ease-in-out;
+}
+
+@keyframes lifeIncreaseAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.life-increase-animation {
+    animation: lifeIncreaseAnimation 1s ease-in-out;
+}
+
+@keyframes flashAnimation {
+
+    0%,
+    100% {
+        background-color: var(--background-color);
+    }
+
+    50% {
+        background-color: var(--yellow);
+    }
+}
+
+.flash {
+    animation: flashAnimation 0.5s infinite;
+}
+
+#status-card {
+    overflow-y: auto; /* Agrega scroll si el contenido excede la altura máxima */
+}
+
+#exchange-card {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.h1,
+h1 {
+    font-size: 4vh;
+}
+
+.footer {
+    padding: 20px 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.flash-sword {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('path/to/sword-cut-image.png') center/cover no-repeat;
+    animation: sword-cut 0.5s ease-out;
+    pointer-events: none;
+  }
+  
+  @keyframes sword-cut {
+    0% {
+      transform: scale(0);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+  }
+  .obstacle {
+    background-color: var(--red); /* Cambia el color según tu preferencia */
+  }
+  
+  /* Estilo para el monstruo */
+  .ghost {
+    background-color: var(--red); /* Cambia el color según tu preferencia */
+    color: var(--font-color); /* Cambia el color de la fuente */
+    font-size: 30px; /* Ajusta el tamaño del emoji */
+  }

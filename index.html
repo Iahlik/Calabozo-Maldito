@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Escape del Calabozo RPG</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+
+<body>
+    <div id="particles-container" class="background-overlay"></div>
+    <div class="container-fluid text-center mt-5 main-container">
+        <h1>Escape del Calabozo RPG</h1>
+        <p>Muévete con los botones o flechas del teclado</p>
+        <div class="row">
+            <div class="col-md-4 col-sm-12 mt-3">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body text-right">
+                        <h3 class="card-title">Vida</h3>
+                        <p>💓 <span id="health">100</span></p>
+                    </div>
+                </div>
+        <div class="card" style="width: 100%;">
+          <div class="card-body text-right">
+            <h3 class="card-title">Tesoros</h3>
+            <p>💰 <span id="score">0</span></p>
+          </div>
+        </div>
+        <div class="card" style="width: 100%;">
+          <div class="card-body text-right">
+            <h3 class="card-title">Movimientos</h3>
+            <p>👣 <span id="moves">0</span></p>
+          </div>
+        </div>
+        <!-- Direction Pad en la esquina inferior izquierda -->
+        <div id="direction-pad" class="text-center mt-3" style="position: absolute; bottom: 0; left: 7vh;">
+          <button id="up" class="btn btn-primary">↑</button>
+          <div class="mt-2">
+            <button id="left" class="btn btn-primary">←</button>
+            <button id="down" class="btn btn-primary">↓</button>
+            <button id="right" class="btn btn-primary">→</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 col-sm-12"> <!-- Ajuste de columnas en dispositivos pequeños -->
+        <!-- Segunda columna: Tablero -->
+        <div id="game-board"></div>
+      </div>
+      
+      <div class="col-md-4 col-sm-12"> <!-- Ajuste de columnas en dispositivos pequeños -->
+        <!-- Tercera columna: Estado del Juego -->
+        <div id="status-card" class="card mt-3" style="text-align: left;">
+          <div class="card-body">
+            <p>Estado: <span id="status">Explorando</span></p>
+          </div>
+        </div>
+
+        <div id="exchange-card" class="card mt-3" style="text-align: left;">
+          <div class="card-body">
+            <button id="exchange-button" class="btn btn-primary">Canjear 100 puntos por una vida</button>
+
+          </div>
+
+          <div class="card-body text-left">
+            <h3 class="card-title">Puntaje Actual:</h3>
+            <p>🏅 <span id="total-score">0</span></p>
+          </div>
+          <div class="card-body text-left">
+            <h3 class="card-title">Puntaje Más Alto:</h3>
+            <p>🏆 <span id="highest-score">0</span></p>
+          </div>
+
+          <div class="card mt-3" style="text-align: left;">
+            <div class="card-body">
+              <button id="reset-button" class="btn btn-danger">Reiniciar Partida</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  </div>
+</div>
+  </div>
+</div>
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Escape del Calabozo RPG. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
